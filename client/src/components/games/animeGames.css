@@ -1,0 +1,1178 @@
+/* =========================================================
+   FROZEN / ICE CARTOON CASUAL GAME UI DESIGN SYSTEM
+   Inspired by Mobile Game UI Kits (Brawl Stars / Angry Birds / Casual Games)
+   Frosty Crystal Panels, Chunky Ice-Slab Buttons, 3-Star Banners,
+   Golden Coins, Indented Display Boxes, and Crystal Sliders
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800;900&family=Nunito:wght@700;800;900&display=swap');
+
+:root {
+  --ice-bg-deep: #1a5682;
+  --ice-bg-mid: #256f9f;
+  --ice-bg-sky: #3b88bc;
+
+  --ice-panel-top: #e2f7ff;
+  --ice-panel-mid: #b8eaff;
+  --ice-panel-bottom: #7ecbf5;
+
+  --ice-border-dark: #0d3858;
+  --ice-border-mid: #154c75;
+  --ice-border-highlight: rgba(255, 255, 255, 0.7);
+
+  --ice-btn-top: #52c5ff;
+  --ice-btn-mid: #1e9ae8;
+  --ice-btn-bottom: #127cc4;
+  --ice-btn-border: #0a3352;
+  --ice-btn-shadow: #062339;
+
+  --ice-inset-bg: #155582;
+  --ice-inset-bottom: #1e6d9e;
+  --ice-inset-border: #0a3454;
+
+  --ice-gold-star-top: #fff38a;
+  --ice-gold-star-mid: #fbbd23;
+  --ice-gold-star-bottom: #d97706;
+  --ice-gold-star-border: #78350f;
+
+  --ice-font-primary: 'Fredoka', 'Nunito', system-ui, sans-serif;
+}
+
+/* ==========================================
+   PAGE CONTAINER & OCEANIC ICE BACKDROP
+   ========================================== */
+
+.hl-games-page.hl-anime-theme {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+  font-family: var(--ice-font-primary);
+  color: #0d3858;
+}
+
+/* Outer background wrap for games */
+.hl-ice-world-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #2b77ab 0%, #1d5b88 50%, #15466b 100%);
+  pointer-events: none;
+}
+
+/* Subtle ice fracture / crystal facets overlay */
+.hl-ice-world-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 25%, rgba(135, 206, 250, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* ==========================================
+   TOP CONTROL BAR (ICONS LIKE TOP-LEFT OF IMAGE)
+   ========================================== */
+
+.hl-ice-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.hl-ice-icon-btn-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Square Ice Icon Buttons (from top-left of reference image) */
+.ice-square-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--ice-btn-top) 0%, var(--ice-btn-mid) 60%, var(--ice-btn-bottom) 100%);
+  border: 3px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 2px 0 var(--ice-border-highlight),
+    0 4px 0 var(--ice-btn-shadow),
+    0 8px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0;
+  user-select: none;
+}
+
+.ice-square-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.08);
+}
+
+.ice-square-btn:active {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 
+    inset 0 1px 0 var(--ice-border-highlight),
+    0 1px 0 var(--ice-btn-shadow);
+}
+
+/* Ice Header Stats Banner */
+.hl-ice-stats-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hl-ice-stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, var(--ice-panel-top) 0%, var(--ice-panel-mid) 100%);
+  border: 2.5px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 var(--ice-border-dark),
+    0 6px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ice-border-dark);
+}
+
+.hl-ice-stat-badge strong {
+  font-size: 16px;
+  color: #0b5182;
+}
+
+/* ==========================================
+   NAVIGATION: CHUNKY ICE-SLAB MENU BUTTONS
+   (EXIT, REPLAY, HOME, RESUME, PLAY, CONTINUE)
+   ========================================== */
+
+.hl-ice-nav-rack {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  padding: 4px 2px 10px;
+  scrollbar-width: thin;
+}
+
+.ice-tab-btn {
+  flex: 1;
+  min-width: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #5ecaff 0%, #249ee8 50%, #157dc4 100%);
+  border: 3px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 5px 0 var(--ice-btn-shadow),
+    0 8px 12px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  font-family: var(--ice-font-primary);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 var(--ice-btn-shadow);
+  cursor: pointer;
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+  user-select: none;
+}
+
+/* Playful alternating tilt like the reference image */
+.ice-tab-btn:nth-child(1) { transform: rotate(-0.8deg); }
+.ice-tab-btn:nth-child(2) { transform: rotate(0.8deg); }
+.ice-tab-btn:nth-child(3) { transform: rotate(-0.6deg); }
+.ice-tab-btn:nth-child(4) { transform: rotate(0.7deg); }
+.ice-tab-btn:nth-child(5) { transform: rotate(-0.5deg); }
+
+.ice-tab-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+.ice-tab-btn:active {
+  transform: translateY(4px) scale(0.98);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 1px 0 var(--ice-btn-shadow);
+}
+
+.ice-tab-btn.active {
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border-color: #633303;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 5px 0 #4a2402,
+    0 8px 14px rgba(245, 158, 11, 0.4);
+  color: #451a03;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   FROSTY ICE PANEL CARD (MAIN CONTAINER)
+   (Matches panels in the reference image)
+   ========================================== */
+
+.ice-panel {
+  position: relative;
+  background: linear-gradient(180deg, var(--ice-panel-top) 0%, var(--ice-panel-mid) 40%, var(--ice-panel-bottom) 100%);
+  border: 4px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 3px 0 var(--ice-border-highlight),
+    0 8px 0 #0a2d47,
+    0 16px 24px rgba(0, 20, 45, 0.4);
+  border-radius: 24px;
+  padding: 32px 28px 28px;
+  margin-bottom: 24px;
+}
+
+/* Ice crack lines on panel background */
+.ice-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background-image: 
+    linear-gradient(45deg, rgba(255, 255, 255, 0.25) 0%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 0%, transparent 35%);
+  pointer-events: none;
+}
+
+/* 3 Golden Stars sitting on top of panel (from bottom-left of reference image) */
+.ice-stars-crown {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 5;
+}
+
+.ice-crown-star {
+  filter: drop-shadow(0 4px 0 #633303);
+  transition: transform 0.2s ease;
+}
+
+.ice-crown-star.star-mid {
+  transform: scale(1.25) translateY(-4px);
+}
+
+.ice-crown-star.star-left {
+  transform: rotate(-12deg);
+}
+
+.ice-crown-star.star-right {
+  transform: rotate(12deg);
+}
+
+/* Panel Header */
+.ice-panel-header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.ice-panel-title {
+  font-size: clamp(24px, 3.5vw, 32px);
+  font-weight: 900;
+  color: #0b4570;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.ice-panel-desc {
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #175480;
+  max-width: 650px;
+  font-weight: 700;
+}
+
+/* ==========================================
+   INDENTED VALUE DISPLAY TROUGHS
+   (SCORE: 25873, REWARD: 63581 from reference image)
+   ========================================== */
+
+.ice-inset-box {
+  background: linear-gradient(180deg, var(--ice-inset-bg) 0%, var(--ice-inset-bottom) 100%);
+  border: 3px solid var(--ice-inset-border);
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: var(--ice-font-primary);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 0 #07253d;
+  font-variant-numeric: tabular-nums;
+}
+
+.ice-inset-label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #104266;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+  text-align: center;
+}
+
+/* ==========================================
+   DIFFICULTY PANEL (MATCHES TOP-RIGHT OF IMAGE)
+   (DIFFICULTY: EASY, NORMAL, HARD)
+   ========================================== */
+
+.ice-difficulty-card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 2.5px dashed #175480;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.ice-difficulty-header {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0b4570;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.ice-difficulty-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ice-diff-btn {
+  flex: 1;
+  min-width: 130px;
+  max-width: 180px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5ecaff 0%, #249ee8 50%, #157dc4 100%);
+  border: 3px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 5px 0 var(--ice-btn-shadow),
+    0 6px 10px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  font-family: var(--ice-font-primary);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 var(--ice-btn-shadow);
+  cursor: pointer;
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ice-diff-btn:nth-child(1) { transform: rotate(-1deg); }
+.ice-diff-btn:nth-child(2) { transform: rotate(0.6deg); }
+.ice-diff-btn:nth-child(3) { transform: rotate(-0.8deg); }
+
+.ice-diff-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.08);
+}
+
+.ice-diff-btn:active {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 1px 0 var(--ice-btn-shadow);
+}
+
+.ice-diff-btn.active {
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border-color: #633303;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 5px 0 #4a2402;
+  color: #451a03;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   CHUNKY ICE ACTION BUTTONS
+   (OK, PLAY, LAUNCH, REPLAY, RESUME)
+   ========================================== */
+
+.ice-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #5ecaff 0%, #209ce8 50%, #147ec7 100%);
+  border: 3px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 6px 0 var(--ice-btn-shadow),
+    0 10px 14px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  font-family: var(--ice-font-primary);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 var(--ice-btn-shadow);
+  cursor: pointer;
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.ice-action-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.08);
+}
+
+.ice-action-btn:active {
+  transform: translateY(4px) scale(0.98);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 1px 0 var(--ice-btn-shadow);
+}
+
+/* Green Variant (Success / OK) */
+.ice-action-btn.btn-green {
+  background: linear-gradient(180deg, #48e58a 0%, #16be60 50%, #0d9648 100%);
+  border-color: #064e26;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 6px 0 #053b1c,
+    0 10px 14px rgba(16, 185, 129, 0.3);
+  text-shadow: 0 2px 0 #053b1c;
+}
+
+/* Gold Variant (Rehash / Fever) */
+.ice-action-btn.btn-gold {
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border-color: #633303;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 6px 0 #4a2402,
+    0 10px 14px rgba(245, 158, 11, 0.35);
+  color: #451a03;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   SLOTS ARRAY (FROSTY PEDESTALS)
+   ========================================== */
+
+.ice-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.ice-slot-card {
+  background: linear-gradient(180deg, #f0faff 0%, #d8f2fe 60%, #b8e6fc 100%);
+  border: 3px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 5px 0 var(--ice-border-dark),
+    0 8px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  padding: 14px 10px;
+  min-height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  user-select: none;
+}
+
+.ice-slot-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #0284c7;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 7px 0 #0369a1,
+    0 10px 16px rgba(2, 132, 199, 0.25);
+}
+
+.ice-slot-card.is-home-target {
+  background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 60%, #fde68a 100%);
+  border-color: #b45309;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 5px 0 #78350f,
+    0 8px 12px rgba(245, 158, 11, 0.25);
+}
+
+.ice-slot-card.is-probing-active {
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%) !important;
+  border-color: #633303 !important;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 0 20px rgba(245, 158, 11, 0.7),
+    0 6px 0 #4a2402 !important;
+  transform: scale(1.06);
+}
+
+.ice-slot-number-pill {
+  background: #0d3858;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  padding: 2px 10px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.ice-home-badge {
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background: #f59e0b;
+  color: #451a03;
+  font-size: 9px;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1.5px solid #78350f;
+  box-shadow: 0 2px 0 #78350f;
+}
+
+.ice-slot-val-chip {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #5ecaff 0%, #209ce8 50%, #147ec7 100%);
+  border: 2.5px solid #0d3d63;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 4px 0 #082942;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  text-shadow: 0 2px 0 #082942;
+}
+
+.ice-slot-empty-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: #6da2c4;
+}
+
+/* ==========================================
+   COLLISION BUSTER HUD & FORMULA CARDS
+   ========================================== */
+
+.ice-hud-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.ice-hud-card {
+  flex: 1;
+  min-width: 140px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2.5px solid var(--ice-border-dark);
+  border-radius: 16px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.ice-hud-card-label {
+  font-size: 11px;
+  font-weight: 900;
+  color: #104266;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.ice-hud-card-val {
+  font-size: 20px;
+  font-weight: 900;
+  color: #0b4570;
+}
+
+/* Incoming Key Stage */
+.ice-launch-stage {
+  background: rgba(255, 255, 255, 0.45);
+  border: 3px solid var(--ice-border-dark);
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ice-key-orb-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ice-key-orb {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border: 3px solid #633303;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 5px 0 #4a2402,
+    0 8px 14px rgba(245, 158, 11, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #451a03;
+  font-weight: 900;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.ice-key-orb small {
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.ice-key-orb strong {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.ice-formula-box {
+  flex: 1;
+  min-width: 240px;
+}
+
+.ice-formula-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 2px solid var(--ice-border-dark);
+  border-radius: 12px;
+  padding: 6px 14px;
+  margin-bottom: 6px;
+  font-size: 15px;
+  font-weight: 900;
+  color: #0b4570;
+}
+
+.ice-formula-display code {
+  color: #0284c7;
+  font-size: 16px;
+}
+
+.ice-formula-hint {
+  font-size: 13px;
+  font-weight: 700;
+  color: #175480;
+}
+
+/* ==========================================
+   FEEDBACK BANNER (MATCHES POPUP ON IMAGE)
+   ========================================== */
+
+.ice-feedback-popup {
+  background: linear-gradient(180deg, #f0faff 0%, #d8f2fe 100%);
+  border: 3.5px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 var(--ice-border-dark),
+    0 12px 18px rgba(0, 0, 0, 0.2);
+  border-radius: 18px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.ice-feedback-popup.success {
+  border-color: #0d9648;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 #053b1c;
+}
+
+.ice-feedback-popup.error {
+  border-color: #dc2626;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 #7f1d1d;
+}
+
+.ice-feedback-title {
+  font-size: 16px;
+  font-weight: 900;
+  color: #0b4570;
+  margin: 0 0 4px;
+}
+
+.ice-feedback-text {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #175480;
+  line-height: 1.45;
+}
+
+/* ==========================================
+   OPTIONS & SOUND PANEL (BOTTOM-RIGHT OF IMAGE)
+   (OPTIONS: MUSIC & SOUND SLIDERS)
+   ========================================== */
+
+.ice-options-card {
+  background: linear-gradient(180deg, var(--ice-panel-top) 0%, var(--ice-panel-mid) 100%);
+  border: 3.5px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 var(--ice-border-dark),
+    0 12px 18px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 22px 26px;
+  max-width: 380px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+/* Ribbon header for OPTIONS (like bottom-right of reference image) */
+.ice-ribbon-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #5ecaff 0%, #209ce8 50%, #147ec7 100%);
+  border: 2.5px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.8),
+    0 3px 0 var(--ice-btn-shadow);
+  border-radius: 8px;
+  padding: 3px 18px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 1.5px 0 var(--ice-btn-shadow);
+}
+
+.ice-slider-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ice-slider-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ice-slider-label {
+  font-size: 13px;
+  font-weight: 900;
+  color: #0b4570;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.ice-slider-track {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #0e3d61 0%, #1d6091 100%);
+  border: 2px solid #0a2d47;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ice-slider-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5ecaff, #209ce8);
+}
+
+/* Ice crystal slider thumb (matching bottom-right of reference image) */
+.ice-slider-thumb {
+  position: absolute;
+  width: 20px;
+  height: 28px;
+  background: linear-gradient(180deg, #ffffff 0%, #9be3fc 40%, #52c5ff 100%);
+  border: 2px solid #0d3d63;
+  box-shadow: 
+    inset 0 1px 0 #fff,
+    0 3px 0 #082942;
+  border-radius: 5px;
+  transform: translate(-50%, 0);
+  cursor: grab;
+}
+
+/* ==========================================
+   HOW TO PLAY HELPER CARD
+   ========================================== */
+
+.ice-helper-card {
+  background: #f0fdf4;
+  border: 2.5px solid #10b981;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 #065f46;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+}
+
+.ice-helper-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ice-helper-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 900;
+  color: #065f46;
+  letter-spacing: 0.04em;
+}
+
+.ice-helper-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+}
+
+.ice-step-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #a7f3d0;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.ice-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.ice-step-chip p {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #064e3b;
+  line-height: 1.4;
+}
+
+/* ==========================================
+   GAME 2: MEMORY WIRES
+   ========================================== */
+
+.ice-wire-board {
+  background: linear-gradient(180deg, #103f63 0%, #0d3454 100%);
+  border: 4px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.4),
+    0 8px 0 #062339;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 22px;
+}
+
+.ice-wire-node-card {
+  width: 130px;
+  background: linear-gradient(180deg, #f0faff 0%, #d8f2fe 60%, #b8e6fc 100%);
+  border: 2.5px solid #0d3d63;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 #082942;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ice-wire-node-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+}
+
+.ice-wire-node-card.is-target-node {
+  border-color: #f59e0b;
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.5), 0 4px 0 #78350f;
+}
+
+.ice-wire-port-btn {
+  background: #0d3d63;
+  border: 1.5px dashed rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* ==========================================
+   GAME 3: MODULO RUSH (30S SPEED MATCH)
+   ========================================== */
+
+.ice-rush-package-card {
+  max-width: 440px;
+  margin: 0 auto 24px;
+  background: linear-gradient(180deg, #ffffff 0%, #e2f7ff 100%);
+  border: 3.5px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 var(--ice-border-dark),
+    0 12px 18px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.ice-rush-btn-rack {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .ice-rush-btn-rack {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ice-number-btn {
+  padding: 18px 10px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #5ecaff 0%, #209ce8 50%, #147ec7 100%);
+  border: 3px solid var(--ice-btn-border);
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.8),
+    0 5px 0 var(--ice-btn-shadow),
+    0 8px 12px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  user-select: none;
+}
+
+.ice-number-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.08);
+}
+
+.ice-number-btn:active {
+  transform: translateY(3px) scale(0.98);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 1px 0 var(--ice-btn-shadow);
+}
+
+.ice-num-label {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+.ice-num-big {
+  font-size: 28px;
+  font-weight: 900;
+  text-shadow: 0 2px 0 var(--ice-btn-shadow);
+  line-height: 1;
+}
+
+/* ==========================================
+   GAME 4: HASH DETECTIVE
+   ========================================== */
+
+.ice-detective-clue-card {
+  background: #fdf4ff;
+  border: 2px dashed #c084fc;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #581c87;
+  line-height: 1.45;
+}
+
+.ice-verdict-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.ice-verdict-btn {
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #e8f4fc 100%);
+  border: 3px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 var(--ice-border-dark),
+    0 6px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.12s ease;
+}
+
+.ice-verdict-btn:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+}
+
+.ice-verdict-btn.active {
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border-color: #633303;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 #4a2402;
+}
+
+.ice-verdict-btn strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  color: #0b4570;
+}
+
+.ice-verdict-btn.active strong {
+  color: #451a03;
+}
+
+.ice-verdict-btn small {
+  font-size: 11px;
+  font-weight: 700;
+  color: #175480;
+}
+
+/* ==========================================
+   GAME 5: TROPHIES & CARDS
+   ========================================== */
+
+.ice-trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.ice-trophy-card {
+  background: linear-gradient(180deg, #ffffff 0%, #e8f7ff 100%);
+  border: 3px solid var(--ice-border-dark);
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 6px 0 var(--ice-border-dark),
+    0 10px 14px rgba(0, 0, 0, 0.15);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.ice-trophy-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.ice-trophy-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffe570 0%, #fab71c 50%, #e08e09 100%);
+  border: 2.5px solid #633303;
+  box-shadow: 
+    inset 0 2px 0 #fff,
+    0 4px 0 #4a2402;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
