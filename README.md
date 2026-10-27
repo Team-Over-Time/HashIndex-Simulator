@@ -67,6 +67,6 @@ hashIndexSimulator/
 ```
 
 ## 🌐 Endpoints & URLs
-- **Web Interface:** [http://localhost:5173](http://localhost:5173)
+- **Web Interface:** (https://hash-index-simulator.vercel.app/)
 - **API Health Check:** [http://localhost:5000/api/health](http://localhost:5000/api/health)
 - **Algorithms API:** [http://localhost:5000/api/algorithms](http://localhost:5000/api/algorithms)
